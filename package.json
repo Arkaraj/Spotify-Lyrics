@@ -1,0 +1,17 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "My electron app",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "Arkaraj",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^11.2.2"
+  }
+}
