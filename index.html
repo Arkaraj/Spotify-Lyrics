@@ -8,37 +8,44 @@
     <title>Spotify Lyrics</title>
 </head>
 
-<body>
+<body class="bg-gray-900">
 
     <section class="text-gray-400 bg-gray-900 body-font">
         <div class="px-3 py-2 mx-2 flex flex-col">
-            <div
-                class="lg:w-4/6 mx-0 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 pb-12 flex flex-col w-full mt-1 mb-5 md:mt-0">
+            <div class="lg:w-4/6 mx-0 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 pb-12 flex flex-col w-full mt-1 mb-5 md:mt-0"
+                id="card">
                 <div class="flex flex-col sm:flex-row mt-1">
                     <div class="sm:w-1/3 text-center sm:pr-8 sm:py-4">
                         <a class="block relative rounded overflow-hidden">
                             <img id="img" alt="Song" class="object-cover rounded-lg object-center w-full h-full block"
-                                src="https://dummyimage.com/300x300">
+                                src="./300x300.png">
                         </a>
                         <div class="flex flex-col items-center text-center justify-center">
                             <h3 class="text-gray-500 text-md tracking-widest title-font mb-1" id="name">Song Name
                             </h3>
-                            <h2 class="font-medium title-font mt-4 text-white text-lg" id="singer">Singer</h2>
+                            <h2 class="font-medium title-font mt-4 text-white text-lg" id="singer">Artist</h2>
                             <div class="w-12 h-1 bg-green-500 rounded mt-2 mb-1"></div>
+                            <!-- volume
+                            <div>
+                                <input type="range" id="volume">
+                            </div> -->
                             <div class="block mb-4 flex flex-row">
                                 <button
-                                    class="mx-2 mt-6 text-white bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded">◀︎</button>
+                                    class="mx-2 mt-6 text-white bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded"
+                                    onclick="prev()">◀︎</button>
                                 <button
-                                    class="mx-2 mt-6 text-white bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded">■</button>
+                                    class="mx-2 mt-6 text-white bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded"
+                                    onclick="play()">■</button>
                                 <button
-                                    class="mx-2 mt-6 text-white bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded">▶︎</button>
+                                    class="mx-2 mt-6 text-white bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-600 rounded"
+                                    onclick="next()">▶︎</button>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="sm:w-2/3 sm:pl-8 sm:pt-4 sm:border-l border-gray-800 sm:border-t-0 border-t mt-1 pt-4 sm:mt-0 text-center sm:text-left">
+                    <div class="sm:w-2/3 sm:pl-8 sm:pt-4 sm:border-l border-gray-800 sm:border-t-0 border-t mt-1 pt-4 sm:mt-0 text-center sm:text-left"
+                        id="scroll">
                         <h2 class="font-medium title-font mt-0 text-green-400 text-lg">Lyrics</h2>
-                        <p class="leading-relaxed text-lg">
+                        <p class="leading-relaxed text-lg overflow-scroll" id="lyrics" style="height: 350px;">
                             Meggings portland fingerstache lyft, post-ironic fixie
                             man bun banh mi umami everyday carry hexagon locavore direct trade art party. Locavore small
                             batch listicle gastropub farm-to-table lumbersexual salvia messenger bag. Coloring book

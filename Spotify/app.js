@@ -3,6 +3,8 @@ const spotify = require('spotify-node-applescript')
 const nameOfSong = document.querySelector('#name')
 const artist = document.querySelector('#singer')
 const img = document.querySelector('#img')
+const lyrics = document.querySelector('#lyrics')
+const Lyrics_URL = "https://colorflyv1.herokuapp.com/v1//lyrics/"
 
 // async function populateSong() {
 //     const header = {
@@ -25,26 +27,69 @@ const img = document.querySelector('#img')
 
 // }
 
+async function Lyrics(opts) {
+    const header = {
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(opts),
+        "method": "POST"
+    }
+    const url = await fetch(Lyrics_URL, header)
+
+    const data = await url.json()
+    // fix for Advertisments
+    lyrics.innerHTML = data["lyrics"]
+}
+
 function populateSong() {
     spotify.getTrack((err, track) => {
         if (err) console.log(err)
         let name = track['name']
         let singer = track['artist']
 
-        if (name === '') {
-            nameOfSong.innerHTML = 'Song'
-            artist.innerHTML = 'singer'
-            img.src = 'https://dummyimage.com/300x300'
-        } else {
-            let imgage = track['artwork_url']
-            nameOfSong.innerHTML = name
-            artist.innerHTML = singer
-            img.src = imgage
+        if (nameOfSong.value !== name) {
 
-            // Get Lyrics
+            let parameters = {
+                artist: singer,
+                song: name
+            }
+            nameOfSong.value = name
+            // Ad
+            if (singer === '') {
+                let imgage = track['artwork_url']
+                nameOfSong.innerHTML = name
+                artist.innerHTML = 'Spotify Advertisment ☹️'
+                img.src = imgage
+            } else {
+                let imgage = track['artwork_url']
+                nameOfSong.innerHTML = name
+                artist.innerHTML = singer
+                img.src = imgage
+
+                Lyrics(parameters);
+            }
+
         }
 
     })
 }
+//let isPaused = false;
+function play() {
+    spotify.playPause()
+    /*if (isPaused) {
+        spotify.play(cb => isPaused = !isPaused)
 
-window.setInterval(populateSong, 2000)
+    } else {
+        spotify.pause(cb => isPaused = !isPaused)
+    }*/
+}
+
+function next() {
+    spotify.next()
+}
+function prev() {
+    spotify.previous()
+}
+
+window.setInterval(populateSong, 4000)
