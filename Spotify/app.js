@@ -38,8 +38,11 @@ async function Lyrics(opts) {
     const url = await fetch(Lyrics_URL, header)
 
     const data = await url.json()
-    // fix for Advertisments
-    lyrics.innerHTML = data["lyrics"]
+    // fix for undefined
+    if (data["lyrics"] === undefined) {
+        lyrics.innerHTML = 'No Lyrics found for this song 🙁'
+    } else
+        lyrics.innerHTML = data["lyrics"]
 }
 
 function populateSong() {
@@ -61,6 +64,7 @@ function populateSong() {
                 nameOfSong.innerHTML = name
                 artist.innerHTML = 'Spotify Advertisment ☹️'
                 img.src = imgage
+                lyrics.innerHTML = 'Advertisment...<br>Stay tuned!'
             } else {
                 let imgage = track['artwork_url']
                 nameOfSong.innerHTML = name
