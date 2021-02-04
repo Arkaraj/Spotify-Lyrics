@@ -2,9 +2,9 @@
   "name": "electron",
   "version": "1.0.0",
   "description": "My electron app",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "start": "electron app.js"
+    "start": "electron main.js"
   },
   "keywords": [
     "electron"
@@ -13,5 +13,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^11.2.2"
+  },
+  "dependencies": {
+    "spotify-node-applescript": "^1.1.1"
   }
 }
