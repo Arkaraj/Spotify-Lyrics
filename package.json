@@ -7,7 +7,9 @@
     "start": "electron main.js"
   },
   "keywords": [
-    "electron"
+    "electron",
+    "spotify",
+    "Lyrics"
   ],
   "author": "Arkaraj",
   "license": "MIT",

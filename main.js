@@ -5,6 +5,7 @@ function createWindow() {
         width: 760,
         height: 525,
         minWidth: 393,
+        icon: __dirname + '/assets/logo.icns',
         webPreferences: {
             nodeIntegration: true
         }
